@@ -10,14 +10,17 @@ const next = document.querySelector('[data-action="next"]');
 const first = document.querySelector('[data-action="first"]');
 const last = document.querySelector('[data-action="last"]');
 
-prev.addEventListener('click', () => move('prev'));
-next.addEventListener('click', () => move('next'));
-first.addEventListener('click', () => move('first'));
-last.addEventListener('click', () => move('last'));
+prev.addEventListener('click', (event) => move('prev'));
+next.addEventListener('click', (event) => move('next'));
+first.addEventListener('click', (event) => move('first'));
+last.addEventListener('click', (event) => move('last'));
 
 checkButton();
 
 function move(mode) {
+  if (event.currentTarget.classList.contains('disabled')) {
+    return;
+  }
   currentSlide.classList.remove('slide-current');
 
   switch (mode) {
